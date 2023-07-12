@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: dockerdep-10-app1
-        image: dotnet-bhanu-app-1 mytag:v1.0
+        image: mytag:v1.0
         ports:
         - containerPort: 80
