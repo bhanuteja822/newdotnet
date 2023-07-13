@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: dockerdep-10-app1
-        image: mytag:v1.0
+        image: containercks.azurecr.io/myimage:1.0.0
         ports:
         - containerPort: 80
       imagePullSecrets:
-       - name: acr-secret
+       - name: secret
