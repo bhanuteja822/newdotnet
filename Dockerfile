@@ -17,11 +17,11 @@ COPY --from=build /app/publish .
 
 ENV ASPNETCORE_URLS=http://*:5000
 
-RUN groupadd -r arun && \
-    useradd -r -g arun -s /bin/false arun && \
-    chown -R arun:arun /app
+RUN groupadd -r bhanu && \
+    useradd -r -g bhanu -s /bin/false bhanu && \
+    chown -R bhanu:bhanu /app
 
-USER arun
+USER bhanu
 
 EXPOSE 8080
 ENTRYPOINT ["dotnet", "dotnet6.dll"]

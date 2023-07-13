@@ -19,3 +19,5 @@ spec:
         image: mytag:v1.0
         ports:
         - containerPort: 80
+      imagePullSecrets:
+       - name: acr-secret
