@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: new-docker-app-deployment
+  name: bhanu/bhanuteja822/pb
   namespace: nv1
   labels:
     app: new-docker-app
