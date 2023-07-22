@@ -47,8 +47,8 @@ spec:
           initialDelaySeconds: 15
           periodSeconds: 5
         env:
-        - name: new-docker-app-deployment
+        - name: bhanu/bhanuteja822/pb
           valueFrom:
             configMapKeyRef:
               key: DB_HOST
-              name: new-docker-app-deployment
+              name: bhanu/bhanuteja822/pb
