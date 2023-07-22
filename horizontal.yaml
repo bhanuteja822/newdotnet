@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: new-docker-app-hpa
+  name: bhanuteja822-hpa
   namespace: nv1
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: bhanu
+    name: bhanuteja822
   minReplicas: 1
   maxReplicas: 10
   metrics:

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: bhanu
+  name: bhanuteja822
   namespace: nv1
 data:
   DB_HOST: key

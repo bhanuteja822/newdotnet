@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bhanu
+  name: bhanuteja822-deployment
   namespace: nv1
   labels:
     app: new-docker-app
@@ -29,26 +29,26 @@ spec:
             name: new-docker-app-deployment
       containers:
       - name: new-docker-app
-        image: kubeassignment.azurecr.io/new_docker-app:latest
+        image: hello12345.azurecr.io/bhanuteja822:latest  # Use your custom Docker image here
         ports:
         - containerPort: 5000
         livenessProbe:
           httpGet:
             path: /_status/healthz
-            port: 5000   # Corrected port to match the containerPort
+            port: 5000
           initialDelaySeconds: 8
           periodSeconds: 10
-          failureThreshold: 3  # Corrected field name
-          successThreshold: 1  # Corrected field name
+          failureThreshold: 3
+          successThreshold: 1
         readinessProbe:
           httpGet:
             path: /readiness
-            port: 5000   # Corrected port to match the containerPort
+            port: 5000
           initialDelaySeconds: 15
           periodSeconds: 5
         env:
-        - name: bhanu
+        - name: new-docker-app-deployment
           valueFrom:
             configMapKeyRef:
               key: DB_HOST
-              name: bhanu
+              name: new-docker-app-deployment

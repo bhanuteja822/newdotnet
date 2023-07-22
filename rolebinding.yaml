@@ -1,13 +1,13 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: dotnetdocker-app-rolebinding
-  namespace: sk
+  name: bhanuteja822-rolebinding
+  namespace: nv1
 subjects:
 - kind: ServiceAccount
-  name: kr
-  namespace: sk
+  name: bhanuteja822-serviceaccount
+  namespace: nv1
 roleRef:
   kind: Role
-  name: dotnetdocker-app-role
+  name: bhanuteja822-role
   apiGroup: rbac.authorization.k8s.io
