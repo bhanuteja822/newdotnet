@@ -1,13 +1,6 @@
+a# serviceaccount.yaml
 apiVersion: v1
-kind: Service
+kind: ServiceAccount
 metadata:
-  name: new-docker-app
+  name: new-docker-app-serviceaccount
   namespace: nv1
-spec:
-  selector:
-    app: new-docker-app
-  type : LoadBalancer
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 9376
