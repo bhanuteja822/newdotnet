@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bhanu/bhanuteja822/pb
+  name: bhanu
   namespace: nv1
   labels:
     app: new-docker-app
@@ -47,8 +47,8 @@ spec:
           initialDelaySeconds: 15
           periodSeconds: 5
         env:
-        - name: bhanu/bhanuteja822/pb
+        - name: bhanu
           valueFrom:
             configMapKeyRef:
               key: DB_HOST
-              name: bhanu/bhanuteja822/pb
+              name: bhanu
