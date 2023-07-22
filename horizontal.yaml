@@ -7,7 +7,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: new-docker-app-deployment
+    name: bhanu/bhanuteja822/pb
   minReplicas: 1
   maxReplicas: 10
   metrics:
