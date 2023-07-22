@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: new-docker-app-deployment
+  name: bhanu/bhanuteja822/pb
   namespace: nv1
 data:
   DB_HOST: key
