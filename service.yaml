@@ -1,15 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dotnetdemoservice
-  namespace: dotnetdemo
+  name: new-docker-app
+  namespace: nv1
 spec:
   selector:
-    app: dotnet-app
-  type: LoadBalancer
-  sessionAffinity: None
+    app: new-docker-app
+  type : LoadBalancer
   ports:
-  - name: http-port
-    protocol: TCP
-    port: 80
-    targetPort: 5000
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
