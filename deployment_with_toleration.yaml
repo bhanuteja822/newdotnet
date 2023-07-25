@@ -15,10 +15,13 @@ spec:
       tolerations:
       - key: special
         operator: "Equal"
-        value: "NoSchedule"
+        value: "tainted"
         effect: "NoSchedule"
       containers:
       - name: my-container
         image: nginx:latest
+        ports:
+        - containerPort: 80
+
 
 
