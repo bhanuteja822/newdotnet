@@ -1,0 +1,50 @@
+namespace: nv1
+configMapName: configk8
+DB_HOST: bermtec
+
+secretName: test-secret
+username: dotnetdemodocker
+password: OihGX0hQxRa53/VGUXJ2Ywr3fiuOTp2lWM3DOlhMPL+ACRDKRpJJ
+
+deploymentName: bhanuteja822-deployment
+replicas: 2
+
+rollingUpdate:
+  maxSurge: 25%
+  maxUnavailable: 25%
+
+appName: new-docker-app
+containerName: new-docker-app
+image: hello12345.azurecr.io/bhanuteja822:latest
+containerPort: 5000
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "300Mi"
+  limits:
+    cpu: "200m"
+    memory: "300Mi"
+
+livenessProbe:
+  initialDelaySeconds: 8
+  periodSeconds: 10
+  failureThreshold: 3
+  successThreshold: 1
+
+readinessProbe:
+  initialDelaySeconds: 15
+  periodSeconds: 5
+
+nodeAffinity:
+  projectLabelKey: project
+  projectLabelValue: dotnetdemo
+
+imagePullSecrets:
+  name: test-secret
+
+serviceType: LoadBalancer
+serviceName: dotnetdemoservice
+servicePort: 80
+targetPort: 5000
+sessionAffinity: None

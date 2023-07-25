@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.serviceName }}
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    app: {{ .Values.appName }}
+  type: {{ .Values.serviceType }}
+  sessionAffinity: {{ .Values.sessionAffinity }}
+  ports:
+  - name: http-port
+    protocol: TCP
+    port: {{ .Values.servicePort }}
+    targetPort: {{ .Values.targetPort }}

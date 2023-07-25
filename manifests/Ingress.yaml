@@ -1,19 +1,25 @@
-# https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: walmartingressdev
-  namespace: walmartdev
+  name: my-ingress
+  namespace: nv1   # Replace 'your-namespace' with the desired namespace name
+  annotations:
+    # Add annotations here if needed
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    kubernetes.io/ingress.class: nginx
 spec:
+  tls:
+  - hosts:
+    - mydomain.com
+    secretName: my-tls-secret
   rules:
-  - host: bermtec.com
+  - host: mydomain.com
     http:
       paths:
-      - path: /
+      - path: /app
         pathType: Prefix
         backend:
           service:
-            name: walmartpaymentservice
+            name: dotnetdemoservice
             port:
               number: 80
