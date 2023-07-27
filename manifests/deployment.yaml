@@ -1,63 +1,46 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bhanuteja822-deployment
-  namespace: nv1
-  labels:
-    app: new-docker-app
+  name: my-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: new-docker-app
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 25%
-      maxSurge: 25%
+      app: myapp
   template:
     metadata:
       labels:
-        app: new-docker-app
+        app: myapp
+      annotations:
+        cni.projectcalico.org/podIP: "10.244.0.28/32"
     spec:
+      serviceAccountName: my-service-account
+      containers:
+      - name: my-container
+        image: nikitha2109/nikithaimage:1.0.1
+        ports:
+        - containerPort: 80
+      tolerations:
+      - key: "pod"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
       affinity:
-        nodeAffinity:
+        podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: your_node_label_key   # Replace with your actual node label key
+          - labelSelector:
+              matchExpressions:
+              - key: "app"
                 operator: In
                 values:
-                - your_node_label_value    # Replace with your actual node label value
-      initContainers:
-      - name: init-setup
-        image: busybox:latest
-        command: ['sh', '-c', 'ls; pwd; sleep 10']
-        envFrom:
-        - configMapRef:
-            name: new-docker-app-deployment
-      containers:
-      - name: new-docker-app
-        image: hello12345.azurecr.io/bhanuteja822:latest  # Use your custom Docker image here
-        ports:
-        - containerPort: 5000
-        livenessProbe:
-          httpGet:
-            path: /_status/healthz
-            port: 5000
-          initialDelaySeconds: 8
-          periodSeconds: 10
-          failureThreshold: 3
-          successThreshold: 1
-        readinessProbe:
-          httpGet:
-            path: /readiness
-            port: 5000
-          initialDelaySeconds: 15
-          periodSeconds: 5
-        env:
-        - name: new-docker-app-deployment
-          valueFrom:
-            configMapKeyRef:
-              key: DB_HOST
-              name: new-docker-app-deployment
+                - myapp
+            topologyKey: "kubernetes.io/hostname"
+        podAntiAffinity:  # Add PodAntiAffinity rules
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: "app"
+                operator: In
+                values:
+                - myapp
+            topologyKey: "kubernetes.io/hostname"
