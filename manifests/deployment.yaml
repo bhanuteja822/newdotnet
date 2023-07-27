@@ -4,6 +4,7 @@ metadata:
   name: my-deployment
 spec:
   replicas: 2
+  selector:  # Remove this entire 'selector' block
   template:
     metadata:
       labels:
