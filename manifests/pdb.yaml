@@ -1,9 +1,9 @@
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: bhanu
+  name: my-pdb
 spec:
   selector:
     matchLabels:
-      app: your-app-label  # Replace with the labels that match your pods
-  minAvailable: 2         # Set the minimum number of available pods during disruptions
+      app: myapp  # Replace with the labels that match your pods
+  minAvailable: 1        # Set the minimum number of available pods during disruptions
