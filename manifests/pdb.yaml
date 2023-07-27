@@ -1,7 +1,7 @@
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: my-pdb
+  name: bhanu
 spec:
   selector:
     matchLabels:
