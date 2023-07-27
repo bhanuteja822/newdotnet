@@ -4,7 +4,9 @@ metadata:
   name: my-deployment
 spec:
   replicas: 2
-  selector:  # Remove this entire 'selector' block
+  selector:
+    matchLabels:
+      app: myapp
   template:
     metadata:
       labels:
@@ -24,15 +26,15 @@ spec:
         value: "true"
         effect: "NoSchedule"
       affinity:
-        podAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: "app"
-                operator: In
-                values:
-                - myapp
-            topologyKey: "kubernetes.io/hostname"
+         podAffinity:
+           requiredDuringSchedulingIgnoredDuringExecution:
+         - labelSelector:
+               matchExpressions:
+               - key: "app"
+                 operator: In
+                 values:
+                 - myapp
+              topologyKey: "kubernetes.io/hostname"
         podAntiAffinity:  # Add PodAntiAffinity rules
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
