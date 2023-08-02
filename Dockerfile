@@ -23,5 +23,5 @@ RUN groupadd -r bhanu && \
 
 USER bhanu
 
-EXPOSE 8080
+EXPOSE 5000
 ENTRYPOINT ["dotnet", "dotnet6.dll"]
