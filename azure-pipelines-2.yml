@@ -19,7 +19,7 @@ variables:
   imagePullSecret: 'bhanu179994cd-auth'
 
   # Agent VM image name
-  vmImageName: 'self'
+  vmImageName: 'selfhosted'
 
 
 stages:
